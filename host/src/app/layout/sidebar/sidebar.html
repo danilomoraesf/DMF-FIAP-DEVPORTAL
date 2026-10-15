@@ -1,0 +1,12 @@
+<nav class="sidebar" [class.collapsed]="shellState.sidebarCollapsed()">
+  @for (item of navItems; track item.path) {
+    <a
+      class="nav-item"
+      [routerLink]="item.path"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+    >
+      {{ item.label }}
+    </a>
+  }
+</nav>

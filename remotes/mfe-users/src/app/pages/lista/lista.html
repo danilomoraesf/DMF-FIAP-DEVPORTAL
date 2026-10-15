@@ -1,0 +1,50 @@
+<app-page-header
+  breadcrumb="DevPortal / mfe-users"
+  title="Usuários"
+  subtitle="Lista de usuários da plataforma, carregada via mock JSON com latência simulada."
+/>
+
+<div class="actions">
+  <app-button variant="primary" (clicked)="reload()">Atualizar lista</app-button>
+  <app-button variant="secondary" (clicked)="simulateError()">Simular erro</app-button>
+</div>
+
+@if (state.loading()) {
+  <p class="status-text">Carregando usuários...</p>
+} @else if (state.error()) {
+  <p class="error-text">{{ state.error() }}</p>
+  <app-button variant="secondary" (clicked)="reload()">Tentar novamente</app-button>
+} @else if (state.users().length === 0) {
+  <p class="status-text">Nenhum usuário cadastrado.</p>
+} @else {
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Papel</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of state.users(); track user.id) {
+          <tr>
+            <td>{{ user.name }}</td>
+            <td class="mono">{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <app-badge [variant]="user.status === 'active' ? 'success' : 'neutral'">
+                {{ user.status === 'active' ? 'Ativo' : 'Inativo' }}
+              </app-badge>
+            </td>
+            <td>
+              <app-button variant="link" [routerLink]="[user.id]">Ver detalhes</app-button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-8);
+}
+
+.code {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-3);
+}
+
+.message {
+  color: var(--color-text-muted);
+  max-width: 40ch;
+  margin: 0 0 var(--space-4) 0;
+}

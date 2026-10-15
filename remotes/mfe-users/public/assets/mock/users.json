@@ -1,0 +1,7 @@
+[
+  { "id": "usr-001", "name": "Mariana Ribeiro", "email": "mariana.ribeiro@devportal.com", "role": "Head de Plataforma", "status": "active" },
+  { "id": "usr-002", "name": "Bruno Carvalho", "email": "bruno.carvalho@devportal.com", "role": "Tech Lead Dashboard", "status": "active" },
+  { "id": "usr-003", "name": "Carla Nunes", "email": "carla.nunes@devportal.com", "role": "Tech Lead Usuários", "status": "active" },
+  { "id": "usr-004", "name": "Diego Santos", "email": "diego.santos@devportal.com", "role": "Engenheiro de Plataforma", "status": "inactive" },
+  { "id": "usr-005", "name": "Elisa Martins", "email": "elisa.martins@devportal.com", "role": "Product Manager", "status": "active" }
+]

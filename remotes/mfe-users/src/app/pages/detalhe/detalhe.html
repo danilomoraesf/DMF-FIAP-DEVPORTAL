@@ -1,0 +1,32 @@
+<app-page-header breadcrumb="DevPortal / mfe-users" title="Detalhe do usuário" />
+
+<div class="actions">
+  <app-button variant="link" routerLink="/">Voltar à lista</app-button>
+</div>
+
+@if (state.loading()) {
+  <p class="status-text">Carregando...</p>
+} @else if (user()) {
+  <app-card>
+    <div class="field">
+      <div class="field-label">Nome</div>
+      <div class="field-value">{{ user()!.name }}</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Email</div>
+      <div class="field-value mono">{{ user()!.email }}</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Papel</div>
+      <div class="field-value">{{ user()!.role }}</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Status</div>
+      <app-badge [variant]="user()!.status === 'active' ? 'success' : 'neutral'">
+        {{ user()!.status === 'active' ? 'Ativo' : 'Inativo' }}
+      </app-badge>
+    </div>
+  </app-card>
+} @else {
+  <p class="status-text">Usuário não encontrado.</p>
+}

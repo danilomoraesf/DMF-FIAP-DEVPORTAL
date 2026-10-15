@@ -1,0 +1,45 @@
+<app-page-header
+  breadcrumb="DevPortal / mfe-dashboard"
+  title="Deploys recentes"
+  subtitle="Histórico de deploys dos módulos do DevPortal."
+/>
+
+<div class="actions">
+  <app-button variant="link" routerLink="/">Voltar ao overview</app-button>
+</div>
+
+@if (state.deploysLoading()) {
+  <p class="status-text">Carregando histórico...</p>
+} @else if (state.deploysError()) {
+  <p class="error-text">{{ state.deploysError() }}</p>
+  <app-button variant="secondary" (clicked)="reload()">Tentar novamente</app-button>
+} @else if (state.deploys().length === 0) {
+  <p class="status-text">Nenhum deploy registrado ainda.</p>
+} @else {
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Quando</th>
+          <th>Módulo</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (deploy of state.deploys(); track deploy.id) {
+          <tr>
+            <td class="mono">{{ deploy.id }}</td>
+            <td>{{ deploy.timestamp | date: 'dd/MM HH:mm' }}</td>
+            <td>{{ deploy.module }}</td>
+            <td>
+              <app-badge [variant]="badgeFor(deploy.status).variant">
+                {{ badgeFor(deploy.status).label }}
+              </app-badge>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

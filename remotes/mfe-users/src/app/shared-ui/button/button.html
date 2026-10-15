@@ -1,0 +1,10 @@
+<button
+  class="btn"
+  [class.primary]="variant === 'primary'"
+  [class.link]="variant === 'link'"
+  [type]="type"
+  [disabled]="disabled"
+  (click)="onClick()"
+>
+  <ng-content />
+</button>

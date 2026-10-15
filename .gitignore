@@ -1,0 +1,7 @@
+# Ferramentas locais (não fazem parte do projeto)
+.claude/
+
+# Segurança extra (cada app já tem seu próprio .gitignore, isto é redundância proposital)
+node_modules/
+dist/
+.angular/

@@ -1,0 +1,72 @@
+/*
+  DevPortal — tokens visuais
+  Direção: "console técnico escuro" — sóbrio, denso em informação,
+  sem gradientes, sem sombras suaves genéricas, sem emoji na UI.
+*/
+
+:root {
+  /* Superfícies */
+  --color-bg: #0a0e13;
+  --color-bg-elevated: #10151c;
+  --color-bg-sunken: #06080a;
+  --color-border: #1f2730;
+  --color-border-strong: #2b3540;
+
+  /* Texto */
+  --color-text: #e6eaef;
+  --color-text-muted: #8a95a1;
+  --color-text-faint: #717d89;
+
+  /* Marca / ação */
+  --color-primary: #3d8bba;
+  --color-primary-strong: #5aa6d1;
+  --color-accent: #e2883f;
+
+  /* Estado */
+  --color-success: #4caf7d;
+  --color-warning: #d6a73d;
+  --color-danger: #d9654f;
+
+  /* Tipografia */
+  --font-sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Consolas", "SFMono-Regular", Menlo, monospace;
+
+  /* Espaçamento (base 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Raio — discreto, não arredondado demais */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* Única "elevação": diferença de superfície + borda de 1px, sem blur */
+  --border-width: 1px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary-strong);
+  outline-offset: 2px;
+}

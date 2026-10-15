@@ -1,0 +1,5 @@
+[
+  { "id": "deploys-hoje", "label": "Deploys hoje", "value": 17, "delta": 6 },
+  { "id": "uptime", "label": "Uptime (30 dias)", "value": 99, "delta": 0 },
+  { "id": "incidentes", "label": "Incidentes abertos", "value": 2, "delta": -3 }
+]

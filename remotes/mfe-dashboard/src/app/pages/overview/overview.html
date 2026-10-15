@@ -1,0 +1,36 @@
+<app-page-header
+  breadcrumb="DevPortal / mfe-dashboard"
+  title="Dashboard"
+  subtitle="Métricas da plataforma, carregadas via mock JSON com latência simulada."
+/>
+
+<div class="actions">
+  <app-button variant="primary" (clicked)="reload()">Atualizar métricas</app-button>
+  <app-button variant="secondary" (clicked)="simulateError()">Simular erro</app-button>
+  <app-button variant="link" routerLink="/detalhes">Ver detalhes de deploys</app-button>
+</div>
+
+@if (state.metricsLoading()) {
+  <p class="status-text">Carregando métricas...</p>
+} @else if (state.metricsError()) {
+  <app-card>
+    <p class="error-text">{{ state.metricsError() }}</p>
+    <app-button variant="secondary" (clicked)="reload()">Tentar novamente</app-button>
+  </app-card>
+} @else if (state.metrics().length === 0) {
+  <p class="status-text">Nenhuma métrica disponível no momento.</p>
+} @else {
+  <div class="stat-row">
+    @for (metric of state.metrics(); track metric.id) {
+      <app-card>
+        <div class="stat-label">{{ metric.label }}</div>
+        <div class="stat-value">{{ metric.value }}</div>
+        @if (metric.delta !== 0) {
+          <app-badge [variant]="metric.delta > 0 ? 'success' : 'danger'">
+            {{ metric.delta > 0 ? '+' : '' }}{{ metric.delta }}
+          </app-badge>
+        }
+      </app-card>
+    }
+  </div>
+}

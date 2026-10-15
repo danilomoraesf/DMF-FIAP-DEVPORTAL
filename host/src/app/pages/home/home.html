@@ -1,0 +1,48 @@
+<app-page-header
+  breadcrumb="DevPortal"
+  title="Visão geral da plataforma"
+  subtitle="Resumo dos módulos mantidos por cada squad. Dashboard e Usuários já rodam como remotes independentes."
+/>
+
+<div class="stat-row">
+  <app-card>
+    <div class="stat-label">Squads ativas</div>
+    <div class="stat-value">04</div>
+  </app-card>
+  <app-card>
+    <div class="stat-label">Módulos no ar</div>
+    <div class="stat-value">02</div>
+  </app-card>
+  <app-card>
+    <div class="stat-label">Em construção</div>
+    <div class="stat-value">01</div>
+  </app-card>
+</div>
+
+<p class="section-title">Módulos</p>
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Módulo</th>
+        <th>Squad</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (module of modules; track module.id) {
+        <tr>
+          <td class="mono">{{ module.id }}</td>
+          <td>{{ module.name }}</td>
+          <td>{{ module.squad }}</td>
+          <td>
+            <app-badge [variant]="badgeFor(module.status).variant">
+              {{ badgeFor(module.status).label }}
+            </app-badge>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

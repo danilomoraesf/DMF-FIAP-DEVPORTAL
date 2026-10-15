@@ -1,0 +1,31 @@
+.actions {
+  margin-bottom: var(--space-4);
+}
+
+.status-text {
+  color: var(--color-text-muted);
+}
+
+.field {
+  margin-bottom: var(--space-4);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.field-label {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-1);
+}
+
+.field-value {
+  font-size: 14px;
+
+  &.mono {
+    font-family: var(--font-mono);
+  }
+}

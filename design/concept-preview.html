@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>DevPortal — conceito visual</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--space-7) var(--space-5);
+  }
+
+  .breadcrumb {
+    color: var(--color-text-faint);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  h1 {
+    margin: 0 0 var(--space-1) 0;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-6) 0;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .card {
+    background: var(--color-bg-elevated);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .stat-label {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-2);
+  }
+
+  .stat-value {
+    font-family: var(--font-mono);
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  .stat-delta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    margin-top: var(--space-1);
+  }
+
+  .stat-delta.up { color: var(--color-success); }
+  .stat-delta.down { color: var(--color-danger); }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-3) 0;
+  }
+
+  .panel {
+    background: var(--color-bg-elevated);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    font-size: 13px;
+  }
+
+  th {
+    color: var(--color-text-faint);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  td {
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  td.id {
+    font-family: var(--font-mono);
+    color: var(--color-text-muted);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border: var(--border-width) solid transparent;
+  }
+
+  .badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .badge.success { color: var(--color-success); background: rgba(76, 175, 125, 0.12); border-color: rgba(76, 175, 125, 0.3); }
+  .badge.warning { color: var(--color-warning); background: rgba(214, 167, 61, 0.12); border-color: rgba(214, 167, 61, 0.3); }
+  .badge.danger  { color: var(--color-danger);  background: rgba(217, 101, 79, 0.12); border-color: rgba(217, 101, 79, 0.3); }
+  .badge.neutral { color: var(--color-text-muted); background: rgba(138, 149, 161, 0.12); border-color: var(--color-border-strong); }
+
+  .actions {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .btn {
+    appearance: none;
+    border: var(--border-width) solid var(--color-border-strong);
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    border-color: var(--color-primary);
+  }
+
+  .btn.primary {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #1a1002;
+  }
+
+  .btn.primary:hover {
+    background: #ec9552;
+    border-color: #ec9552;
+  }
+
+  .btn.link {
+    background: transparent;
+    border-color: transparent;
+    color: var(--color-primary-strong);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .btn.link:hover {
+    color: var(--color-primary);
+    border-color: transparent;
+    text-decoration: underline;
+  }
+
+  .body-text {
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+
+  .divider-note {
+    color: var(--color-text-faint);
+    font-size: 12px;
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+    border-top: var(--border-width) solid var(--color-border);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="breadcrumb">DevPortal / Dashboard / Overview</div>
+    <h1>Visão geral da plataforma</h1>
+    <p class="subtitle">Conferência de direção visual — tipografia, cor, cards, badges e botões antes de virar componente Angular.</p>
+
+    <div class="stat-row">
+      <div class="card">
+        <div class="stat-label">Squads ativas</div>
+        <div class="stat-value">04</div>
+        <div class="stat-delta up">+1 este trimestre</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Deploys hoje</div>
+        <div class="stat-value">17</div>
+        <div class="stat-delta up">+6 vs. ontem</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Incidentes abertos</div>
+        <div class="stat-value">02</div>
+        <div class="stat-delta down">-3 vs. semana passada</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary">Novo relatório</button>
+      <button class="btn">Exportar dados</button>
+      <button class="btn link">Ver histórico completo</button>
+    </div>
+
+    <p class="section-title">Módulos</p>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Módulo</th>
+            <th>Squad</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="id">mfe-dashboard</td>
+            <td>Dashboard</td>
+            <td>Squad Dashboard</td>
+            <td><span class="badge success">Online</span></td>
+          </tr>
+          <tr>
+            <td class="id">mfe-users</td>
+            <td>Usuários</td>
+            <td>Squad Usuários</td>
+            <td><span class="badge success">Online</span></td>
+          </tr>
+          <tr>
+            <td class="id">mfe-reports</td>
+            <td>Relatórios</td>
+            <td>Squad Relatórios</td>
+            <td><span class="badge neutral">Planejado</span></td>
+          </tr>
+          <tr>
+            <td class="id">mfe-notifications</td>
+            <td>Notificações</td>
+            <td>Squad Notificações</td>
+            <td><span class="badge warning">Em build</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="section-title">Texto corrido</p>
+    <p class="body-text">
+      Parágrafo de referência para avaliar peso e cor da tipografia secundária:
+      corpo de texto em cinza-azulado sobre fundo escuro, denso o suficiente
+      para telas com bastante dado, sem perder contraste de leitura.
+    </p>
+
+    <div class="divider-note">
+      Esta página é só para validar a direção visual (cores, tipografia, espaçamento, raio, estados).
+      Nada aqui é Angular ainda — é a referência que vira componente na Fase 1b.
+    </div>
+  </div>
+</body>
+</html>
