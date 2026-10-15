@@ -22,14 +22,27 @@ Cada pasta (`host/`, `remotes/mfe-dashboard/`, `remotes/mfe-users/`) é um proje
 independente, com seu próprio `package.json` e `node_modules` — de propósito, para deixar claro que
 não existe acoplamento de build entre eles.
 
+### Requisitos
+
+- **Node** `^20.19.0 || ^22.12.0 || >=24.0.0` (exigência do Angular CLI 21). Cada app já tem um
+  `engines` no `package.json` + um `.npmrc` com `engine-strict=true`, então se a sua versão do Node
+  não bater, o `npm install` recusa na hora com uma mensagem clara em vez de quebrar silenciosamente
+  mais pra frente.
+- Pra rodar via Docker, o **Docker Desktop precisa estar aberto na sua máquina** antes do
+  `docker compose up` — isso roda inteiramente local, não depende de nenhum serviço externo.
+
 ### Localmente, sem Docker
 
-Primeiro, instale as dependências de cada um (uma vez só):
+Primeiro, instale as dependências de cada um (uma vez só). Em vez de `npm install` puro, use
+`npx -y npm@11.21.0 install` — isso garante que a instalação roda com essa versão específica do npm,
+sem precisar mudar nada na sua máquina (o `npx` baixa essa versão só pra esse comando, não instala
+nada global). Isso evita um bug conhecido de versões do npm anteriores à 11, que trava a resolução
+de dependências deste projeto com um erro genérico e difícil de rastrear:
 
 ```bash
-cd host && npm install
-cd remotes/mfe-dashboard && npm install
-cd remotes/mfe-users && npm install
+cd host && npx -y npm@11.21.0 install
+cd remotes/mfe-dashboard && npx -y npm@11.21.0 install
+cd remotes/mfe-users && npx -y npm@11.21.0 install
 ```
 
 Depois é só subir os três com `ng serve`, cada um no seu terminal. A ordem não importa muito na
