@@ -26,17 +26,15 @@ const SIMULATED_LATENCY_MS = 400;
 export class DashboardData {
   private readonly http = inject(HttpClient);
 
-  getMetrics(simulateError = false): Observable<DashboardMetric[]> {
-    const file = simulateError ? 'metrics-404.json' : 'metrics.json';
+  getMetrics(): Observable<DashboardMetric[]> {
     return this.http
-      .get<DashboardMetric[]>(`${ASSETS_BASE_URL}/assets/mock/${file}`)
+      .get<DashboardMetric[]>(`${ASSETS_BASE_URL}/assets/mock/metrics.json`)
       .pipe(delay(SIMULATED_LATENCY_MS));
   }
 
-  getDeploys(simulateError = false): Observable<DeployRecord[]> {
-    const file = simulateError ? 'deploys-404.json' : 'deploys.json';
+  getDeploys(): Observable<DeployRecord[]> {
     return this.http
-      .get<DeployRecord[]>(`${ASSETS_BASE_URL}/assets/mock/${file}`)
+      .get<DeployRecord[]>(`${ASSETS_BASE_URL}/assets/mock/deploys.json`)
       .pipe(delay(SIMULATED_LATENCY_MS));
   }
 }

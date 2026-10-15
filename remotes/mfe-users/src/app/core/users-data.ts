@@ -20,10 +20,9 @@ const SIMULATED_LATENCY_MS = 400;
 export class UsersData {
   private readonly http = inject(HttpClient);
 
-  getUsers(simulateError = false): Observable<AppUser[]> {
-    const file = simulateError ? 'users-404.json' : 'users.json';
+  getUsers(): Observable<AppUser[]> {
     return this.http
-      .get<AppUser[]>(`${ASSETS_BASE_URL}/assets/mock/${file}`)
+      .get<AppUser[]>(`${ASSETS_BASE_URL}/assets/mock/users.json`)
       .pipe(delay(SIMULATED_LATENCY_MS));
   }
 }

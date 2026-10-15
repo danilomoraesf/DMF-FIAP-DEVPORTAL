@@ -23,8 +23,4 @@ export class Overview implements OnInit {
   protected reload(): void {
     this.state.loadMetrics();
   }
-
-  protected simulateError(): void {
-    this.state.loadMetrics(true);
-  }
 }

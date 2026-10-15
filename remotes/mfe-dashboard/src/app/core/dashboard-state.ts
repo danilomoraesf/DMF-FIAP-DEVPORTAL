@@ -16,12 +16,12 @@ export class DashboardState {
   readonly deploysLoading = signal(false);
   readonly deploysError = signal<string | null>(null);
 
-  loadMetrics(simulateError = false): void {
+  loadMetrics(): void {
     this.metricsLoading.set(true);
     this.metricsError.set(null);
 
     this.dataService
-      .getMetrics(simulateError)
+      .getMetrics()
       .pipe(
         catchError(() => {
           this.metricsError.set('Não foi possível carregar as métricas. Tente novamente.');
@@ -34,12 +34,12 @@ export class DashboardState {
       });
   }
 
-  loadDeploys(simulateError = false): void {
+  loadDeploys(): void {
     this.deploysLoading.set(true);
     this.deploysError.set(null);
 
     this.dataService
-      .getDeploys(simulateError)
+      .getDeploys()
       .pipe(
         catchError(() => {
           this.deploysError.set('Não foi possível carregar o histórico de deploys.');

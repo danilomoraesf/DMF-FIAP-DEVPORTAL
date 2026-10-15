@@ -215,7 +215,8 @@ trabalhando em paralelo — que é o cenário real aqui — o balanço pende pro
 ## Dados mockados
 
 Não existe backend real neste projeto. Cada remote serve seus próprios mocks como arquivos JSON
-estáticos (`public/assets/mock/*.json`), consumidos via `HttpClient` com uma latência simulada e um
-botão "Simular erro" em cada tela — que busca de propósito um arquivo que não existe, pra disparar o
-fluxo de erro de verdade (`catchError`, mensagem de erro na tela, botão de tentar de novo), não só o
-caminho feliz.
+estáticos (`public/assets/mock/*.json`), consumidos via `HttpClient` com uma latência simulada
+(`delay`). O `catchError` continua lá como rede de segurança de verdade — se a chamada falhar por
+qualquer motivo, a tela mostra uma mensagem de erro e um botão "Tentar novamente" — mas sem nenhum
+gatilho manual na interface pra forçar esse caminho; não faria sentido um produto real ter um botão
+"Simular erro" só pra provar que o tratamento existe.

@@ -12,12 +12,12 @@ export class UsersState {
   readonly loading = signal(false);
   readonly error = signal<string | null>(null);
 
-  loadUsers(simulateError = false): void {
+  loadUsers(): void {
     this.loading.set(true);
     this.error.set(null);
 
     this.dataService
-      .getUsers(simulateError)
+      .getUsers()
       .pipe(
         catchError(() => {
           this.error.set('Não foi possível carregar os usuários. Tente novamente.');

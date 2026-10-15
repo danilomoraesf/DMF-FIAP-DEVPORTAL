@@ -22,8 +22,4 @@ export class Lista implements OnInit {
   protected reload(): void {
     this.state.loadUsers();
   }
-
-  protected simulateError(): void {
-    this.state.loadUsers(true);
-  }
 }
