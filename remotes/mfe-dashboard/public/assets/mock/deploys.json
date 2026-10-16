@@ -3,5 +3,5 @@
   { "id": "dep-1041", "timestamp": "2026-10-15T07:40:00", "module": "mfe-users", "status": "success" },
   { "id": "dep-1040", "timestamp": "2026-10-14T22:05:00", "module": "mfe-dashboard", "status": "failed" },
   { "id": "dep-1039", "timestamp": "2026-10-14T18:30:00", "module": "host", "status": "success" },
-  { "id": "dep-1038", "timestamp": "2026-10-14T15:11:00", "module": "mfe-users", "status": "running" }
+  { "id": "dep-1038", "timestamp": "2026-10-14T15:11:00", "module": "mfe-notifications", "status": "running" }
 ]
