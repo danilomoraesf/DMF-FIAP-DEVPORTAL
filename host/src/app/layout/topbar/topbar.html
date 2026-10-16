@@ -7,8 +7,4 @@
     <span class="user-name">{{ shellState.user().name }}</span>
     <span class="user-role">{{ shellState.user().role }}</span>
   </div>
-
-  <app-button variant="secondary" (clicked)="shellState.toggleSidebar()">
-    {{ shellState.sidebarCollapsed() ? 'Expandir menu' : 'Recolher menu' }}
-  </app-button>
 </header>

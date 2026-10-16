@@ -1,12 +1,22 @@
 <nav class="sidebar" [class.collapsed]="shellState.sidebarCollapsed()">
-  @for (item of navItems; track item.path) {
-    <a
-      class="nav-item"
-      [routerLink]="item.path"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-    >
-      {{ item.label }}
-    </a>
-  }
+  <div class="nav-items">
+    @for (item of navItems; track item.path) {
+      <a
+        class="nav-item"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </div>
+
+  <button type="button" class="toggle" (click)="shellState.toggleSidebar()">
+    @if (shellState.sidebarCollapsed()) {
+      <span>»</span>
+    } @else {
+      <span>« Recolher menu</span>
+    }
+  </button>
 </nav>
