@@ -1,12 +1,12 @@
 <app-page-header
   breadcrumb="DevPortal / mfe-dashboard"
   title="Dashboard"
-  subtitle="Métricas da plataforma, carregadas via mock JSON com latência simulada."
+  subtitle="Indicadores de saúde e atividade da plataforma, atualizados periodicamente."
 />
 
 <div class="actions">
   <app-button variant="primary" (clicked)="reload()">Atualizar métricas</app-button>
-  <app-button variant="link" routerLink="/detalhes">Ver detalhes de deploys</app-button>
+  <app-button variant="link" routerLink="detalhes">Ver detalhes de deploys</app-button>
 </div>
 
 @if (state.metricsLoading()) {

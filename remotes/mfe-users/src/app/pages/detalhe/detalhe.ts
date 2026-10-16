@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs/operators';
 import { PageHeader } from '../../shared-ui/page-header/page-header';
 import { Card } from '../../shared-ui/card/card';
 import { Badge } from '../../shared-ui/badge/badge';
@@ -19,10 +17,7 @@ export class Detalhe implements OnInit {
   protected readonly state = inject(UsersState);
   private readonly route = inject(ActivatedRoute);
 
-  private readonly userId = toSignal(
-    this.route.paramMap.pipe(map((params) => params.get('id'))),
-    { initialValue: this.route.snapshot.paramMap.get('id') },
-  );
+  private readonly userId = signal<string | null>(this.route.snapshot.paramMap.get('id'));
 
   protected readonly user = computed(() => {
     const id = this.userId();
@@ -30,6 +25,8 @@ export class Detalhe implements OnInit {
   });
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => this.userId.set(params.get('id')));
+
     if (this.state.users().length === 0) {
       this.state.loadUsers();
     }
