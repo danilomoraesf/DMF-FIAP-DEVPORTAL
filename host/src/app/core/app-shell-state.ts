@@ -11,7 +11,7 @@ export interface MockUser {
 export class AppShellState {
   readonly user = signal<MockUser>({
     name: 'Mariana Ribeiro',
-    role: 'Head de Plataforma',
+    role: 'Head de Plataforma · Admin',
   });
 
   readonly sidebarCollapsed = signal(false);
